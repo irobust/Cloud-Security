@@ -184,3 +184,4 @@ provider "aws" {
 
 References
 * https://docs.aws.amazon.com/pdfs/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf#welcome
+* https://d1.awsstatic.com/whitepapers/Security/AWS_Security_Checklist.pdf
