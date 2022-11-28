@@ -181,3 +181,6 @@ provider "aws" {
 * inspec supermarket exec dev-sec/linux-baseline -t docker://[Container-ID]
 * inspec init profile --platform os my-profile
 * inspec check my-profile
+
+References
+* https://docs.aws.amazon.com/pdfs/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf#welcome
