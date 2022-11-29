@@ -185,6 +185,8 @@ provider "aws" {
 ### Chef Inspec
 * inspec exec linux_control_01.rb
 * inspec exec docker_control_01.rb
+* inspec detect -t aws://
+* inspec detect -t aws://[region]/[profile]
 * inspec exec inside-container_01.rb -t docker://[Container-ID]
 * inspec exec inside-container_01.rb -t ssh://[User]@[Server-IP]
 * git clone https://github.com/dev-sec/linux-baseline
