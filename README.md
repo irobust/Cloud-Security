@@ -95,7 +95,7 @@ provider "aws" {
 * prowler -g [group-name] -E [check-id]
 * prowler -M csv,json,json-asff,html,text,junit-xml
 * prowler -M csv -B my-bucket/folder/ // Upload to amazon s3
-* docker run -ti --rm --name prowler --env AWS_ACCESS_KEY_ID --env AWS_SECRET_ACCESS_KEY --env AWS_SESSION_TOKEN toniblyx/prowler:latest
+* docker run -it --rm --name prowler --env AWS_ACCESS_KEY_ID --env AWS_SECRET_ACCESS_KEY --env AWS_SESSION_TOKEN toniblyx/prowler:latest
 
 ### Trivy
 * trivy image python:3.4-alpine
@@ -168,11 +168,25 @@ provider "aws" {
 * checkov --hard-fail-on HARD_FAIL_ON [LOW|MEDIUM|HIGH|CRITICAL]
 
 ## Continuous Compliance
+### AWS Config
+* click Add rule
+* select desired_instance_type rule
+* Set rule parameter
+  - instance_type = t2.micro
+* Select rule and click action button and choose Remediation action
+* Set remediation action to AWS-ResizeInstance
+* Set resource id parameter to instanceID
+* Set parameter
+  - instance type = t2.micro
+* Manual remediate
+  - select non-compliance rule
+  - click remediate
+
 ### Chef Inspec
 * inspec exec linux_control_01.rb
 * inspec exec docker_control_01.rb
 * inspec exec inside-container_01.rb -t docker://[Container-ID]
-* inspec exec inside-container_01.rb -t ssh://[user]@[Container-ID]
+* inspec exec inside-container_01.rb -t ssh://[User]@[Server-IP]
 * git clone https://github.com/dev-sec/linux-baseline
 * inspec exec linux-baseline-master/-t docker://[Container-ID]
 * inspec exec https://github.com/dev-sec/cis-docker-benchmark
@@ -181,7 +195,23 @@ provider "aws" {
 * inspec supermarket exec dev-sec/linux-baseline -t docker://[Container-ID]
 * inspec init profile --platform os my-profile
 * inspec check my-profile
+* inspec shell
+  - help
+  - help resources
+  - help file
+  - file('/path/to/file').exists?
+  - file('/path/to/file').content
+  - file('/path/to/file').methods
+* inspec shell -t ssh://[User]@[Server-IP] -i [key.pem] 
+* inspec shell -t docker://[Container-ID]
+* inspec init profile --platform aws aws-profile
+* inspec shell --depends aws-profile -t aws://ap-southeast-1
+  - aws_ec2_instances.instance_ids
+  - aws_ec2_instance('instance-id').exists?
+  - aws_ec2_instance('instance-id').instance_type
+  - aws_ec2_instance('instance-id').vpc_id
 
 References
-* https://docs.aws.amazon.com/pdfs/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf#welcome
-* https://d1.awsstatic.com/whitepapers/Security/AWS_Security_Checklist.pdf
+* [Well-Architected Security Pillars](https://docs.aws.amazon.com/pdfs/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf#welcome)
+* [AWS Security Checklist](https://d1.awsstatic.com/whitepapers/Security/AWS_Security_Checklist.pdf)
+* [Using AWS Systems Manager to run compliance scans using InSpec by Chef](https://aws.amazon.com/blogs/mt/using-aws-systems-manager-to-run-compliance-scans-using-inspec-by-chef)
