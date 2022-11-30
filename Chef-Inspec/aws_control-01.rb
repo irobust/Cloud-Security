@@ -5,7 +5,7 @@ end
 describe aws_ec2_instance('i-01a2349e94458a507') do
     it { should exist }
     it { should be_running }
-    it { should_not have_roles }y
+    it { should_not have_roles }
 end
 
 aws_ec2_instances.where(tags: /"tier"=>"web"/).instance_ids.each do |id|

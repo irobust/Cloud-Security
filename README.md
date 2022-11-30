@@ -80,7 +80,7 @@ provider "aws" {
 * scout aws --ruleset custom.json
 * scout aws --exceptions exceptions.json --no-browser
 * scout aws --skip SERVICES
-* scout aws --report-format json
+* scout aws --result-format json
 * scout aws -r REGIONS
 * scout aws -xr EXCLUDE_REGIONS
 
@@ -197,6 +197,7 @@ provider "aws" {
 * inspec supermarket exec dev-sec/linux-baseline -t docker://[Container-ID]
 * inspec init profile --platform os my-profile
 * inspec check my-profile
+* inspec vendor
 * inspec shell
   - help
   - help resources
@@ -212,6 +213,19 @@ provider "aws" {
   - aws_ec2_instance('instance-id').exists?
   - aws_ec2_instance('instance-id').instance_type
   - aws_ec2_instance('instance-id').vpc_id
+
+## Securing infrastructure
+### Flow Log
+1. create CloudWatch log group
+    * go to CloudWatch
+    * select Log > Log group
+    * Actions > create log group 
+1. create IAM role
+    * follow this [document](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs-cwl.html)
+1. create flow log
+    * select VPC, subnet or network interface that you want to flow log
+    * Set Filter
+    * Set log group and flowlog role
 
 References
 * [Well-Architected Security Pillars](https://docs.aws.amazon.com/pdfs/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf#welcome)
