@@ -222,6 +222,33 @@ provider "aws" {
     * Actions > create log group 
 1. create IAM role
     * follow this [document](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs-cwl.html)
+    * create policy
+    ```
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "logs:CreateLogGroup",
+            "logs:CreateLogStream",
+            "logs:PutLogEvents",
+            "logs:DescribeLogGroups",
+            "logs:DescribeLogStreams"
+          ],
+          "Resource": "*"
+        }
+      ]
+    }   
+    ```
+    * create role (choose create custom trust policy) update principal to this
+    ```
+    "Principal": {
+        "Service": "vpc-flow-logs.amazonaws.com"
+    }
+    ```
+    * Add permission that created earlier
+
 1. create flow log
     * select VPC, subnet or network interface that you want to flow log
     * Set Filter
