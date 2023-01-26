@@ -47,6 +47,9 @@ export AWS_DEFAULT_REGION="us-east-1"
 ```
 * aws configure
 
+#### AirIAM
+https://github.com/bridgecrewio/AirIAM
+
 #### Setup SAD Cloud
 * git clone https://github.com/nccgroup/sadcloud.git
 * cd sadcloud
