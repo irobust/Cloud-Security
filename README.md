@@ -49,6 +49,15 @@ export AWS_DEFAULT_REGION="us-east-1"
 
 #### AirIAM
 https://github.com/bridgecrewio/AirIAM
+* airiam find_unused
+* aitiam terraform
+* git add .
+* git commit -m "current iam"
+* airiam terraform --without-unused -l 30
+* git add .
+* git commit -m "terraform without unused"
+* git log --graph --decorate —-oneline
+* git diff [commit ID1] [commit ID2]
 
 #### Setup SAD Cloud
 * git clone https://github.com/nccgroup/sadcloud.git
