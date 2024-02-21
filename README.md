@@ -98,15 +98,18 @@ provider "aws" {
 
 ### Prowler
 * prowler -h
-* prowler -r [region]
-* prowler -l
-* prowler -l -g [group-name]
-* prowler -g [group-name]
-* prowler -c check310
-* prowler -E check310 // Except
-* prowler -g [group-name] -E [check-id]
-* prowler -M csv,json,json-asff,html,text,junit-xml
-* prowler -M csv -B my-bucket/folder/ // Upload to amazon s3
+* prowler aws --profile custom-profile -f us-east-1 eu-south-2
+* prowler aws -M csv json json-asff html
+* prowler aws --list-compliances
+* prowler aws --list-checks
+* prowler aws --list-services
+* prowler aws --checks s3_bucket_public_access
+* prowler aws --services s3 ec2
+* prowler aws --excluded-checks s3_bucket_public_access
+* prowler aws --excluded-services s3 ec2\
+* prowler aws -M csv -B my-bucket // Upload to amazon s3
+
+#### Prowler on Docker
 * docker run -it --rm --name prowler --env AWS_ACCESS_KEY_ID --env AWS_SECRET_ACCESS_KEY --env AWS_SESSION_TOKEN toniblyx/prowler:latest
 
 ### Trivy
