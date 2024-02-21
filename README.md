@@ -100,10 +100,14 @@ provider "aws" {
 * prowler -h
 * prowler aws --profile custom-profile -f us-east-1 eu-south-2
 * prowler aws -M csv json json-asff html
-* prowler aws --list-compliances
+* prowler aws --list-compliance
+* prowler aws --list-compliance-requirements cis_1.5_aws
+* prowler aws --list-categories
 * prowler aws --list-checks
 * prowler aws --list-services
 * prowler aws --checks s3_bucket_public_access
+* prowler aws --compliance cis_1.5_aws
+* prowler aws --categories secrets
 * prowler aws --services s3 ec2
 * prowler aws --excluded-checks s3_bucket_public_access
 * prowler aws --excluded-services s3 ec2\
