@@ -34,6 +34,13 @@
     * select group to get the dba permission
     * click permission tab
     * click add permission and attach policy
+1. Switch Role to Temporary role
+    * Login with user
+    * On username click Switch role
+    * Set Account ID
+    * Set Role Name
+    * Choose Color
+    * Click Switch role button
 
 ## Cloud Auditing Tools
 ### Environment setup
