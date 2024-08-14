@@ -14,7 +14,7 @@
     ``` 
     aws s3 ls
     ```
-    * modify IAM role and choose created role on previous step
+    * modify IAM role and choose created role on previous step (Action > Security > Modify IAM Role)
     * run command again
 
 ### Create temporary role
