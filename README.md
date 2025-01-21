@@ -285,3 +285,4 @@ References
 * [AWS-Well-Architected Security Pillars](https://docs.aws.amazon.com/pdfs/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf#welcome)
 * [AWS Security Checklist](https://d1.awsstatic.com/whitepapers/Security/AWS_Security_Checklist.pdf)
 * [Using AWS Systems Manager to run compliance scans using InSpec by Chef](https://aws.amazon.com/blogs/mt/using-aws-systems-manager-to-run-compliance-scans-using-inspec-by-chef)
+* https://docs.aws.amazon.com/systems-manager/latest/userguide/integration-chef-inspec.html
