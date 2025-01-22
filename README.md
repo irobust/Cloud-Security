@@ -18,11 +18,29 @@
     * run command again
 
 ### Create temporary role
-1. create IAM role
+1. create IAM role (EC2InstanceAadmin)
     * select AWS Account
     * add AmazonRDSFullAccess policy
     * fill name and description
     * create role
+1. Add Trust relationship
+    * Select created role
+    * Click Trust relationship
+    * Change Principal to user that want to assume role
+      ```
+      "principal" : {
+         "AWS" : "arn:aws:iam::891377221950:user/user1"
+      }
+      ```
+      or add multiple users
+      ```
+      "principal" : {
+         "AWS" : [
+               "arn:aws:iam::891377221950:user/user1",
+               "arn:aws:iam::891377221950:user/scoutsuite"
+         ]
+      }
+      ```
 1. create IAM policy for STS
     * copy arn from role page
     * click create new policy
@@ -30,7 +48,7 @@
     * set action Write > AssumeRole
     * select specify ARN
     * Add ARN that copied(ARN of role that created in previous step)
-1. attach IAM policy to group
+1. attach IAM policy to group or user
     * select group to get the dba permission
     * click permission tab
     * click add permission and attach policy
@@ -285,3 +303,4 @@ References
 * [AWS-Well-Architected Security Pillars](https://docs.aws.amazon.com/pdfs/wellarchitected/latest/security-pillar/wellarchitected-security-pillar.pdf#welcome)
 * [AWS Security Checklist](https://d1.awsstatic.com/whitepapers/Security/AWS_Security_Checklist.pdf)
 * [Using AWS Systems Manager to run compliance scans using InSpec by Chef](https://aws.amazon.com/blogs/mt/using-aws-systems-manager-to-run-compliance-scans-using-inspec-by-chef)
+* https://docs.aws.amazon.com/systems-manager/latest/userguide/integration-chef-inspec.html
