@@ -213,15 +213,32 @@ provider "aws" {
 
 ## Continuous Compliance
 ### AWS Config
+### Step 1 Create Rule
 * click Add rule
-* select desired_instance_type rule
+* select `desired_instance_type` rule
 * Set rule parameter
   - instance_type = t2.micro
+
+#### Step 2 Create Role for SSMAutomation
+* Open the IAM console.
+* choose Roles, and then Create role.
+* For Select type of trusted entity, choose AWS service, and then select Systems Manager.
+* Under Select your use case, choose Systems Manager, and then Next.
+* Attach the necessary permissions policies.
+   - AmazonSSMAutomationRole (Attach Policy)
+   - Create Inline Policy to allow terminate EC2
+      * Select `EC2`
+      * Choose `TerminateInsatnces` in `Write` section
+      * Resources -> `All`
+      * Choose Next
+
+#### Step 3 Manage Remediation
 * Select rule and click action button and choose Remediation action
 * Set remediation action to AWS-ResizeInstance
 * Set resource id parameter to instanceID
 * Set parameter
   - instance type = t2.micro
+  - Set `AutomationAssumeRole` to role that created in Step 2
 * Manual remediate
   - select non-compliance rule
   - click remediate
