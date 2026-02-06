@@ -139,7 +139,7 @@ provider "aws" {
 * prowler aws -M csv -B my-bucket // Upload to amazon s3
 
 #### Prowler on Docker
-* docker run -it --rm --name prowler --env AWS_ACCESS_KEY_ID --env AWS_SECRET_ACCESS_KEY --env AWS_SESSION_TOKEN toniblyx/prowler:latest
+* docker run -it --rm --name prowler --env AWS_ACCESS_KEY_ID --env AWS_SECRET_ACCESS_KEY --env AWS_SESSION_TOKEN prowlercloud/prowler
 
 ### Trivy
 * trivy image python:3.4-alpine
